@@ -22,15 +22,21 @@ class WorldCupTest < MiniTest::Test
 
 
   def test_world_cup_exists
-    
+    assert_instance_of WorldCup, @world_cup
   end
 
-# pry(main)> world_cup.year
-# # => 2018
-#
-# pry(main)> world_cup.teams
-# # => [#<Team:0x00007f936a313698...>, #<Team:0x00007f936a3afea8...>]
-#
+  def test_world_cup_has_a_year
+    assert_equal 2018, @world_cup.year
+  end
+
+  def test_world_cup_has_teams
+    assert_equal [@france, @croatia], @world_cup.teams
+  end
+
+  def test_active_players_by_position_can_be_retrieved
+    assert_equal [@pogba, @modric], @world_cup.active_players_by_position("midfielder")
+  end
+
 # pry(main)> world_cup.active_players_by_position("midfielder")
 # # => [#<Player:0x00007f936c035eb0...>, #<Player:0x00007f936a3595f8...>]
 #
